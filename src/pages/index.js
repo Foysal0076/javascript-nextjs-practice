@@ -1,17 +1,31 @@
+import { Box, Button, Typography } from '@mui/material'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const Home = () => {
     return (
-        <div >
+        <div>
             <Head>
                 <title>Javascript Practice</title>
             </Head>
 
-            <main >
-                <h1 style={{ textAlign: 'center' }}>
-                    Welcome to Javascript & Next.js Practice
-                </h1>
-            </main>
+            <Typography variant='h1' textAlign='center'>Index</Typography>
+
+            <Box display='flex' justifyContent='center' my={4}>
+                <Link href='/create-word-file'>
+                    <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
+                        Create Word File
+                    </Button>
+                </Link>
+            </Box>
+
+            <Box display='flex' justifyContent='center' my={4}>
+                <Link href='/drag-and-reorder-list'>
+                    <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
+                        Drag and Reorder List
+                    </Button>
+                </Link>
+            </Box>
         </div>
     )
 }
