@@ -33,6 +33,13 @@ const Home = () => {
                     </Button>
                 </Link>
             </Box>
+            <Box display='flex' justifyContent='center' my={4}>
+                <Link href='/chat-layout' passHref>
+                    <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
+                        Chat Layout
+                    </Button>
+                </Link>
+            </Box>
         </div>
     )
 }
