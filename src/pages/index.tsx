@@ -47,6 +47,13 @@ const Home = () => {
           </Button>
         </Link>
       </Box>
+      <Box display='flex' justifyContent='center' my={4}>
+        <Link href='/context-menu-with-hook' passHref>
+          <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
+            Context Menu with Hook
+          </Button>
+        </Link>
+      </Box>
     </div>
   )
 }
