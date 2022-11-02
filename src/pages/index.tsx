@@ -1,8 +1,11 @@
 import { Box, Button, Typography } from '@mui/material'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <Head>
@@ -14,7 +17,7 @@ const Home = () => {
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/create-word-file' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Create Word File
+            {t('create-word-file')}
           </Button>
         </Link>
       </Box>
@@ -22,35 +25,42 @@ const Home = () => {
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/drag-and-reorder-list' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Drag and Reorder List
+            {t('drag-and-reorder-list')}
           </Button>
         </Link>
       </Box>
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/infinite-scroll' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Infinite Scroll
+            {t('infinite-scroll')}
           </Button>
         </Link>
       </Box>
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/chat-layout' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Chat Layout
+            {t('chat-layout')}
           </Button>
         </Link>
       </Box>
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/context-menu' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Context Menu
+            {t('context-menu')}
           </Button>
         </Link>
       </Box>
       <Box display='flex' justifyContent='center' my={4}>
         <Link href='/context-menu-with-hook' passHref>
           <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
-            Context Menu with Hook
+            {t('context-menu-with-hook')}
+          </Button>
+        </Link>
+      </Box>
+      <Box display='flex' justifyContent='center' my={4}>
+        <Link href='/localization' passHref>
+          <Button variant='outlined' color='success' sx={{ width: '300px', textTransform: 'capitalize', color: 'GrayText', fontSize: '20px', marginBottom: '8px' }}>
+            {t('localization')}
           </Button>
         </Link>
       </Box>

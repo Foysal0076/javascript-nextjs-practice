@@ -1,0 +1,14 @@
+{
+  "app_title": "Titre",
+  "language": "Langue",
+  "welcome_message": "Bienvenue",
+  "days_since_release": "ça fait {{number_of_days}} jours depuis la sortie de cette vidéo",
+  "localization": "Localización",
+  "index": "índice",
+  "create-word-file": "Crear archivo de Word",
+  "drag-and-reorder-list": "Lista de arrastrar y reordenar",
+  "infinite-scroll": "Scroll infinito",
+  "chat-layout": "Diseño de chat",
+  "context-menu": "Menú de contexto",
+  "context-menu-with-hook": "Menú contextual con Hook"
+}
