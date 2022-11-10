@@ -3,6 +3,7 @@ import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableCell, T
 import { Box, Button, Container, Typography } from "@mui/material"
 import { saveAs } from 'file-saver'
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer"
+import ConvertToWord from "@components/FileConvert/ConvertToWord"
 
 const mockData = {
   title: 'Export Word File From React',
@@ -46,7 +47,6 @@ const createTableCells = (item: any) => {
   }
   return cells
 }
-
 
 const document = new Document({
   styles: {
@@ -208,12 +208,22 @@ const CreateWordFile = () => {
     })
   }
 
+  const reader = new FileReader()
+
   return (
     <Box>
       <Container>
         <Typography variant='h4' component='h1' my={4} textAlign='center'>Export Word File</Typography>
         <Box display='flex' justifyContent='center' mb={4}>
           <Button variant='contained' onClick={() => saveDocument2File(document, 'Test Document.docx')}>Export 2 Word</Button>
+        </Box>
+
+        <DocViewer
+        documents={[reader.readAsArrayBuffer(document)]}
+        />
+
+        <Box py={4}>
+          <ConvertToWord />
         </Box>
 
       </Container>
