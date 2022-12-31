@@ -16,7 +16,6 @@ import {
 } from 'docx'
 import { Box, Button, Container, Typography } from '@mui/material'
 import { saveAs } from 'file-saver'
-import DocViewer, { DocViewerRenderers } from 'react-doc-viewer'
 import ConvertToWord from '@components/FileConvert/ConvertToWord'
 
 const mockData = {

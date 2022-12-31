@@ -1,4 +1,11 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useOnClickOutside } from './useOnClickOutside'
 import { Box } from '@mui/material'
 
@@ -6,13 +13,15 @@ type Position = {
   x: number
   y: number
 }
- 
-const useContextMenu = (handler?: any) => {
 
+const useContextMenu = (handler?: any) => {
   const [offSet, setOffSet] = useState({ xAxis: 150, yAxis: 150 })
 
   const [showContextMenu, setShowContextMenu] = useState<boolean>(false)
-  const [contextMenuPosition, setContextMenuPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+  const [contextMenuPosition, setContextMenuPosition] = useState<Position>({
+    x: 0,
+    y: 0,
+  })
   // const [menuWidth, setMenuWidth] = useState(200)
   const contextMenuRef = useRef(null)
   // console.log('menuWidth', menuWidth)
@@ -30,7 +39,7 @@ const useContextMenu = (handler?: any) => {
   //   setOffSet({ xAxis: menuWidth, yAxis: 150 })
   // }, [menuWidth])
 
-  const _onContextMenuClick = (event) => {
+  const _onContextMenuClick = (event: React.MouseEvent) => {
     const clickX = event.clientX
     const clickY = event.clientY
     const screenH = window.innerHeight
@@ -39,7 +48,8 @@ const useContextMenu = (handler?: any) => {
     const left = !right
     const top = screenH - clickY > offSet.yAxis
     const bottom = !top
-    let x, y
+    let x = 0
+    let y = 0
     if (right) {
       x = clickX + 5
     }
@@ -61,10 +71,8 @@ const useContextMenu = (handler?: any) => {
     setShowContextMenu(false)
   }
 
-
   const Menu = useMemo(() => {
-    const MenuComponent = ({ children }) => {
-      console.log('called')
+    const MenuComponent = ({ children }: any) => {
       return (
         <Box
           ref={contextMenuRef}
@@ -76,7 +84,7 @@ const useContextMenu = (handler?: any) => {
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
             top: contextMenuPosition.y,
             left: contextMenuPosition.x,
-            "& ul": {
+            '& ul': {
               listStyle: 'none',
               margin: 0,
               padding: '10px',
@@ -84,9 +92,9 @@ const useContextMenu = (handler?: any) => {
                 padding: '5px 0',
                 '&:hover': {
                   backgroundColor: '#dedede',
-                  cursor: 'pointer'
-                }
-              }
+                  cursor: 'pointer',
+                },
+              },
             },
           }}>
           {children}
