@@ -10,5 +10,6 @@
   "infinite-scroll": "Infinite Scroll",
   "chat-layout": "Chat Layout",
   "context-menu": "Context Menu",
-  "context-menu-with-hook": "Context Menu with Hook"
+  "context-menu-with-hook": "Context Menu with Hook",
+  "doc-playground": "Doc Playground"
 }

@@ -4,11 +4,12 @@ import { AppProps } from 'next/app'
 import '../styles/globals.css'
 import HttpApi from 'i18next-http-backend'
 import { initReactI18next, useTranslation } from 'react-i18next'
-import { Box, Typography } from '@mui/material'
+import { Box, ThemeProvider, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { languages } from '@constants/languages'
 import { useRouter } from 'next/router'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import theme from 'shared/theme'
 
 i18next
   .use(HttpApi)
@@ -35,7 +36,7 @@ const loadingMarkup = (
   </Box>
 )
 
-function MyApp ({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const AnyComponent = Component as any
 
   //#region Language Change
@@ -53,9 +54,11 @@ function MyApp ({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Layout>
-        <AnyComponent {...pageProps} />
-      </Layout >
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <AnyComponent {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </>
   )
 }
