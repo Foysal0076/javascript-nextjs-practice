@@ -1,0 +1,14 @@
+{
+  "app_title": "عنوان",
+  "language": "اللغة",
+  "welcome_message": "اهلا بكم",
+  "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو",
+  "localization": "الموقع",
+  "index": "فهرس",
+  "create-word-file": "إنشاء ملف وورد",
+  "drag-and-reorder-list": "سحب وإعادة ترتيب القائمة",
+  "infinite-scroll": "التدرج اللانهائي",
+  "chat-layout": "تخطيط الدردشة",
+  "context-menu": "قائمة السياق",
+  "context-menu-with-hook": "قائمة السياق مع Hook"
+}

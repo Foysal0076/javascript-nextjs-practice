@@ -33,3 +33,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#ts
+*.tsbuildinfo
+next-env.d.ts

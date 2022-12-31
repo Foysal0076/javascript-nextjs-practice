@@ -1,5 +1,5 @@
 import { Container, Typography, Box } from '@mui/material'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useOnClickOutside } from '../shared/hooks/useOnClickOutside'
 
 const mockPersons = [
@@ -94,48 +94,48 @@ type Props = {
   contextMenuRef: React.RefObject<HTMLElement>
 }
 
-const ContextMenu = React.forwardRef(({ show, top, left, children, contextMenuRef }: Props) => {
+const ContextMenu = React.forwardRef(
+  ({ show, top, left, children, contextMenuRef }: Props) => {
+    const _ref = useRef(null)
+    const divRef = contextMenuRef ?? _ref
 
-  const _ref = useRef(null)
-  const divRef = contextMenuRef ?? _ref
-
-  console.log(divRef.current)
-  return (
-    <Box
-      ref={divRef}
-      sx={{
-        display: show ? 'block' : 'none',
-        background: (theme) => theme.palette.background.paper,
-        position: 'absolute',
-        borderRadius: '4px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-        top,
-        left,
-        "& ul": {
-          listStyle: 'none',
-          margin: 0,
-          padding: '10px',
-          '& li': {
-            padding: '5px 0',
-            '&:hover': {
-              backgroundColor: '#dedede',
-              cursor: 'pointer'
-            }
-          }
-        },
-      }}>
-      {children}
-    </Box>
-  )
-})
+    return (
+      <Box
+        ref={divRef}
+        sx={{
+          display: show ? 'block' : 'none',
+          background: (theme) => theme.palette.background.paper,
+          position: 'absolute',
+          borderRadius: '4px',
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+          top,
+          left,
+          '& ul': {
+            listStyle: 'none',
+            margin: 0,
+            padding: '10px',
+            '& li': {
+              padding: '5px 0',
+              '&:hover': {
+                backgroundColor: '#dedede',
+                cursor: 'pointer',
+              },
+            },
+          },
+        }}>
+        {children}
+      </Box>
+    )
+  }
+)
+ContextMenu.displayName = 'ContextMenu'
 
 const offSet = {
   xAxis: 150,
-  yAxis: 150
+  yAxis: 150,
 }
 
 const ContextMenuPage = () => {
-
   const [contacts, setContacts] = useState(mockPersons)
   const [currentSelection, setCurrentSelection] = useState<ICurrentSelection>()
   const [showContextMenu, setShowContextMenu] = useState<boolean>(false)
@@ -143,16 +143,16 @@ const ContextMenuPage = () => {
   const onDeleteContact = (id: number) => {
     const newContacts = contacts.filter((contact) => contact.id !== id)
     setContacts(newContacts)
+    setShowContextMenu(false)
   }
 
-  const contextMenuRef = useRef(null)
+  const contextMenuRef = useRef<HTMLElement | null>(null)
 
-  useEffect(() => {
-    if (contextMenuRef?.current) {
-      const el = contextMenuRef.current.getBoundingClientRect()
-      console.log({ el })
-    }
-  }, [contextMenuRef])
+  // useEffect(() => {
+  //   if (contextMenuRef?.current) {
+  //     const el = contextMenuRef.current.getBoundingClientRect()
+  //   }
+  // }, [contextMenuRef])
 
   const _onContextMenuClick = (e: React.MouseEvent, contact: any) => {
     e.preventDefault()
@@ -164,7 +164,8 @@ const ContextMenuPage = () => {
     const left = !right
     const top = screenH - clickY > offSet.yAxis
     const bottom = !top
-    let x, y
+    let x = 0
+    let y = 0
     if (right) {
       x = clickX + 5
     }
@@ -187,10 +188,16 @@ const ContextMenuPage = () => {
 
   return (
     <Container>
-      <Typography textAlign='center' component='h1' variant='h3' my={3}>Right click to show context menu</Typography>
-      <Box display='flex' flexDirection='column' gap={2} sx={{
-        background: (theme) => theme.palette.background.paper,
-      }}>
+      <Typography textAlign='center' component='h1' variant='h3' my={3}>
+        Right click to show context menu
+      </Typography>
+      <Box
+        display='flex'
+        flexDirection='column'
+        gap={2}
+        sx={{
+          background: (theme) => theme.palette.background.paper,
+        }}>
         {contacts.map((contact) => (
           <Box
             key={contact.id}
@@ -203,17 +210,30 @@ const ContextMenuPage = () => {
               borderRadius: '4px',
               position: 'relative',
             }}
-            onContextMenu={(e) => _onContextMenuClick(e, contact)}
-          >
+            onContextMenu={(e) => _onContextMenuClick(e, contact)}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box sx={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: '#ccc', mr: 1 }} />
+              <Box
+                sx={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  backgroundColor: '#ccc',
+                  mr: 1,
+                }}
+              />
               <Box>
-                <Typography component='h2' variant='h6'>{contact.name}</Typography>
-                <Typography component='p' variant='subtitle1'>{contact.job}</Typography>
+                <Typography component='h2' variant='h6'>
+                  {contact.name}
+                </Typography>
+                <Typography component='p' variant='subtitle1'>
+                  {contact.job}
+                </Typography>
               </Box>
             </Box>
             <Box>
-              <Typography component='p' variant='subtitle1'>{contact.mobile}</Typography>
+              <Typography component='p' variant='subtitle1'>
+                {contact.mobile}
+              </Typography>
             </Box>
           </Box>
         ))}
@@ -222,10 +242,11 @@ const ContextMenuPage = () => {
             contextMenuRef={contextMenuRef}
             show={showContextMenu}
             top={currentSelection?.position.y}
-            left={currentSelection?.position.x}
-          >
+            left={currentSelection?.position.x}>
             <ul>
-              <li>Delete Message</li>
+              <li onClick={() => onDeleteContact(currentSelection.contact.id)}>
+                Delete Message
+              </li>
               <li>Pin Message Pin Message Pin Message</li>
               <li>Edit Message</li>
               <li>{currentSelection?.contact.name}</li>
