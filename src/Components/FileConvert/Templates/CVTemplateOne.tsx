@@ -69,6 +69,7 @@ const CVTemplateOne = () => {
                 height={20}
                 width={20}
                 objectFit='scale-down'
+                alt=''
               />
               <Typography component='p' variant='body1' color='white'>
                 46 Roman Rd, Leeds LS2 3ZR
@@ -80,6 +81,7 @@ const CVTemplateOne = () => {
                 height={20}
                 width={20}
                 objectFit='scale-down'
+                alt=''
               />
               <Typography component='p' variant='body1' color='white'>
                 07912345 678
@@ -91,6 +93,7 @@ const CVTemplateOne = () => {
                 height={20}
                 width={20}
                 objectFit='scale-down'
+                alt=''
               />
               <Typography component='p' variant='body1' color='white'>
                 dom.webster@example.co.uk
