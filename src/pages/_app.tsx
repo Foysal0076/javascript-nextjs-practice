@@ -44,7 +44,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const currentLanguageCode = useRouter().locale || 'en'
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
   const { t } = useTranslation()
-  console.log(currentLanguage)
   useEffect(() => {
     console.log('Setting page stuff')
     document.body.dir = currentLanguage?.dir || 'ltr'

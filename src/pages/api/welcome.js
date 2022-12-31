@@ -1,6 +1,8 @@
-
-const welcome = (req, res) => {
-    res.status(200).json({ name: 'Welcome to Javascript Practice' })
+const welcome = async (req, res) => {
+  if (req.method === 'GET') {
+    const { test } = req.body
+    res.send({ message: `This is body ${test}` })
+  }
 }
 
 export default welcome
