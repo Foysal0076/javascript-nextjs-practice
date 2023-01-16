@@ -145,6 +145,22 @@ const Home = () => {
           </Button>
         </Link>
       </Box>
+      <Box display='flex' justifyContent='center' my={4}>
+        <Link href='/css-positions' passHref>
+          <Button
+            variant='outlined'
+            color='success'
+            sx={{
+              width: '300px',
+              textTransform: 'capitalize',
+              color: 'GrayText',
+              fontSize: '20px',
+              marginBottom: '8px',
+            }}>
+            CSS Positions
+          </Button>
+        </Link>
+      </Box>
     </div>
   )
 }
